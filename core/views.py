@@ -8,3 +8,10 @@ def menu(request):
 
 def pedido(request):
 	return render(request, 'pedido.html')
+
+def cadastro(request):
+	return render(request, 'cadastro.html')
+
+def login(request):
+	return render(request, 'login.html')
+
