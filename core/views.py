@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 def index(request):
 	return render(request, 'index.html')
@@ -14,4 +15,8 @@ def cadastro(request):
 
 def login(request):
 	return render(request, 'login.html')
+
+@login_required
+def perfil(request):
+	return render(request, 'perfil.html')
 
