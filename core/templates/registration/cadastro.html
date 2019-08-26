@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+{% block conteudo %}
+<section class="ftco-section">
+      <div class="container">
+        <div class="row no-gutters justify-content-center mb-5 pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <h2>Cadastro</h2>
+          </div>
+        </div>
+        <form method="post">
+        {% csrf_token %}
+        <p>Usuário: {{form.username}}</p>
+        <p>Senha: {{form.password1}}</p>
+        <p>Repetir Senha: {{form.password2}}</p>
+
+        <button type="submit"> Salvar</button>  
+        </form>
+    </section>
+{% endblock %}
+</body>
+</html>
