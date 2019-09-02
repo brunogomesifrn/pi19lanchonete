@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from core.views import index, menu, pedido, cadastro, login, perfil
+from core.views import index, menu, pedido, cadastro, login, perfil, dados
 
 urlpatterns = [
 	path('index/', index, name='index'),
@@ -24,6 +24,7 @@ urlpatterns = [
 	path('pedido/', pedido, name = 'pedido'),
     path('perfil/', perfil, name = 'perfil'),
     path('cadastro/', cadastro, name = 'cadastro'),
+    path('dados/<int:id>/', dados, name='dados'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('admin/', admin.site.urls),

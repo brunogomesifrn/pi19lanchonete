@@ -28,3 +28,14 @@ def login(request):
 def perfil(request):
 	return render(request, 'perfil.html')
 
+@login_required
+def dados(request, id):
+	user = User.objects.get(pk=id)
+	form = UserCreationForm(request.POST or None, instance=user)
+	if form.is_valid():
+		form.save()
+		return redirect('perfil')
+		contexto = {
+		'form': form
+		}
+		return render(request, 'registro.html', contexto)

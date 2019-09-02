@@ -19,6 +19,12 @@
         <p>Usuário: {{form.username}}</p>
         <p>Senha: {{form.password1}}</p>
         <p>Repetir Senha: {{form.password2}}</p>
+        <ul>
+          <p>Sua senha precisa conter:</p>
+          <li>No mínimo 8 caracteres</li>
+          <li>Ter letras e números</li>
+          <li>Não pode conter dados do nome do usuário na senha</li>
+        </ul>
 
         <button type="submit"> Salvar</button>  
         </form>
