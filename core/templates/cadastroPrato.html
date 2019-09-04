@@ -6,11 +6,14 @@
   <title></title>
 </head>
 <body>
-{% if user.is_superuser==1 %}	
+
 {% block conteudo %}
   
+  {% if user.is_superuser==1 %}	
+  {%endif%}
+
 {% endblock %}
-{%endif%}
+
 </body>
 </html>
 
