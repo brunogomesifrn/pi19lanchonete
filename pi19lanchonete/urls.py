@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from core.views import index, menu, pedido, cadastro, login, perfil, dados
+from core.views import index, menu, pedido, cadastro, login, perfil, dados, sobre
 
 urlpatterns = [
 	path('index/', index, name='index'),
 	path('menu/', menu, name= 'menu'),
 	path('pedido/', pedido, name = 'pedido'),
+    path('sobre/', sobre, name='sobre'),
     path('perfil/', perfil, name = 'perfil'),
     path('cadastro/', cadastro, name = 'cadastro'),
     path('dados/<int:id>/', dados, name='dados'),

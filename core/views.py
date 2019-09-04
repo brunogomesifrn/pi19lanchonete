@@ -11,6 +11,9 @@ def menu(request):
 def pedido(request):
 	return render(request, 'pedido.html')
 
+def sobre(request):
+	return render(request, 'sobre.html')
+
 def cadastro(request):
 	form = UserCreationForm(request.POST or None)
 	if form.is_valid():
