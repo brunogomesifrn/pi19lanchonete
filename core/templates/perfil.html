@@ -8,8 +8,12 @@
 <body>
 {% block conteudo %}
   <p>Olá {{ user.username}}</p>
-  <p><a href="{url 'logout'}">Sair</a></p>
-        
+  <a href="{% url 'logout' %}">Sair</a>
+  <div>
+  {% if user.is_superuser %}	
+  	<span><a href="{% url 'cadastroPrato' %}" class="btn btn-primary btn-outline-primary p-3">Cadastrar Prato</a></span>
+  {% endif %}
+  </div>      
 {% endblock %}
 </body>
 </html>

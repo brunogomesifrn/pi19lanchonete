@@ -24,6 +24,9 @@ def cadastro(request):
 	}	
 	return render(request, 'registration/cadastro.html', contexto)
 
+def cadastroPrato(request):
+	return render(request, 'cadastroPrato.html')
+
 def login(request):
 	return render(request, 'login.html')
 
