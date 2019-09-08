@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from .models import produto
+from .forms import produtoForm
 
 def index(request):
 	return render(request, 'index.html')
@@ -25,7 +27,16 @@ def cadastro(request):
 	return render(request, 'registration/cadastro.html', contexto)
 
 def cadastroPrato(request):
-	return render(request, 'cadastroPrato.html')
+	form = produtoForm(request.POST or None, request.FILES or None)
+	if form.is_valid():
+		produto = form.save(commit=False)		
+		produto.save()
+		return redirect('perfil')		
+	contexto = {
+		'form': form
+	}
+	
+	return render(request, 'cadastroPrato.html', contexto)
 
 def login(request):
 	return render(request, 'login.html')
