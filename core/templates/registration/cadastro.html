@@ -8,27 +8,63 @@
 <body>
 {% block conteudo %}
 <section class="ftco-section">
-      <div class="container">
-        <div class="row no-gutters justify-content-center mb-5 pb-5">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2>CADASTRO</h2>
-          </div>
-        </div>
-        <form method="post">
-        {% csrf_token %}
-        <p>Usuário: {{form.username}}</p>
-        <p>Senha: {{form.password1}}</p>
-        <p>Repetir Senha: {{form.password2}}</p>
-        <ul>
-          <p>Sua senha precisa conter:</p>
-          <li>No mínimo 8 caracteres</li>
-          <li>Ter letras e números</li>
-          <li>Não pode conter dados do nome do usuário na senha</li>
-        </ul>
-
-        <button type="submit">Cadastrar</button>  
-        </form>
-    </section>
+  <div class="container">
+    <div class="row no-gutters justify-content-center mb-5 pb-5">
+      <div class="col-md-7 text-center heading-section ftco-animate">
+        <h2>CADASTRO</h2>
+      </div>
+    </div>
+    <div class="row d-flex">
+      <div class="col-md-6 ftco-animate img" style="background-image: url('{% static "images/bg_1.jpg" %}');"></div>
+      <div class="col-md-6 ftco-animate makereservation p-5 bg-light">
+            <form method="post">
+            {% csrf_token %}
+              <div class="col-md-6">
+                <div class="form-group">
+                  <h4>Usuário: </br> 
+                  {{form.username}}</h4>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <h4>Email: </h4>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <h4>Senha: </br> 
+                  {{form.password1}}</h4>
+                </div>
+                <ul>
+                  <p>Sua senha precisa conter:</p>
+                  <li>No mínimo 8 caracteres</li>
+                  <li>Ter letras e números</li>
+                  <li>Não pode conter dados do nome do usuário na senha</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <h4>Endereço:</h4>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <h4>Repetir Senha: </br> 
+                  {{form.password2}}</h4>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <h4>Telefone: </h4>
+                </div>
+              </div>
+              </br>
+              <button type="submit" class="btn btn-primary py-3 px-5">Cadastrar</button> 
+            </form>
+      </div>    
+    </div>
+  </div>
+</section> 
 {% endblock %}
 </body>
 </html>

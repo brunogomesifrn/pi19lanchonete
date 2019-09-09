@@ -12,9 +12,31 @@
         <div class="row no-gutters justify-content-center mb-5 pb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
             <h2>LOGIN</h2>
-            <br />
           </div>
-      <div class="container">
+        </div>
+        <div class="row d-flex">
+          <div class="col-md-4 ftco-animate img" style="background-image: url('{% static "images/bg_1.jpg" %}');"></div>
+          <div class="col-md-8 ftco-animate makereservation p-5 bg-light">
+                <form method="post">
+                {% csrf_token %}
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <h4>Usuário: 
+                      {{ form.username }}</h4>
+                      </br>
+                      <h4>Senha: 
+                      {{ form.password }}</h4>
+                      </br>
+                      <button type="submit" class="btn btn-primary py-3 px-5">Entrar</button> 
+                    </div>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+  </section>
+
+<!--  <section class="ftco-section">
         <div class="row no-gutters justify-content-center mb-5 pb-5">
           <form method="post">
           {% csrf_token %} 
@@ -23,8 +45,8 @@
           <button type="submit">Entrar</button>
           </form>
       </div>
-    </section>
+    </section> -->
   
-  {% endblock %}
+{% endblock %}
 </body>
 </html>
