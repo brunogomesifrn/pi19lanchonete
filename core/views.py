@@ -5,7 +5,11 @@ from .models import produto
 from .forms import produtoForm
 
 def index(request):
-	return render(request, 'index.html')
+	pedido = produto.objects.all()
+	contexto = {
+		'pedido_lista': pedido
+	}
+	return render(request, 'index.html', contexto)
 
 def menu(request):
 	return render(request, 'menu.html')
