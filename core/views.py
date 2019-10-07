@@ -20,6 +20,13 @@ def pedido(request):
 def sobre(request):
 	return render(request, 'sobre.html')
 
+def pratos(request):
+	pedido = produto.objects.all()
+	contexto = {
+	'pedido_lista': pedido
+	}
+	return render(request, 'pratos.html', contexto)	
+
 def cadastro(request):
 	form = UserCreationForm(request.POST or None)
 	if form.is_valid():
@@ -60,3 +67,8 @@ def dados(request, id):
 		'form': form
 		}
 		return render(request, 'registro.html', contexto)
+
+def excluir(request, id):
+	pedido = produto.objects.get(pk=id)
+	produto.delete()
+	return redirect('perfil')

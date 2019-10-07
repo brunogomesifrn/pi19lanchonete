@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+<html>
+<head>
+	
+</head>
+<body>
+{% block conteudo %}	
+<div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-4">
+        <h1 class="my-5">Lista de Pratos</h1>
+        <div class="list-group">
+        {% for pedido in pedido_lista %}
+          <p class="list-group-item mb-3">{{pedido.nome}} <a class="float-right" href="{% url 'excluir' pedido.id %}"><i class="fas fa-times text-danger"></i></a></p>
+        {% empty %}
+          <p>Nenhum produto cadastrado</p>
+        {% endfor %}  
+        </div>
+          <br />
+          <a class="nav-link" href="{% url 'cadastroPrato' %}">Novo Cadastro</a>
+      </div>
+      <!-- /.col-lg-3 -->
+      
+    </div>
+  </div>
+ {% endblock %}
+</body>
+</html>
