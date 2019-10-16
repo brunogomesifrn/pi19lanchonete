@@ -5,6 +5,7 @@
 
   <body>
 {% block conteudo %}
+{% if user.is_authenticated %}
     <section class="ftco-section">
       <div class="container">
         <div class="row no-gutters justify-content-center mb-5 pb-5">
@@ -73,6 +74,9 @@
         </div>
       </div>
     </section>
+    {% else %}
+       <span><a href="{% url 'login' %}" class="btn btn-primary btn-outline-primary p-3">Login</a></span>
+    {% endif %}
 {% endblock %}
     
   

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import produto
-from .forms import produtoForm
+from .forms import produtoForm, categoriaForm
 
 def index(request):
 	pedido = produto.objects.all()
@@ -19,6 +19,9 @@ def pedido(request):
 
 def sobre(request):
 	return render(request, 'sobre.html')
+
+def ListaPedidos(request):
+	return render(request, 'ListaPedidos.html')	
 
 def pratos(request):
 	pedido = produto.objects.all()
@@ -38,6 +41,7 @@ def cadastro(request):
 	return render(request, 'registration/cadastro.html', contexto)
 
 def cadastroPrato(request):
+	
 	form = produtoForm(request.POST or None, request.FILES or None)
 	if form.is_valid():
 		produto = form.save(commit=False)		
@@ -48,6 +52,19 @@ def cadastroPrato(request):
 	}
 	
 	return render(request, 'cadastroPrato.html', contexto)
+
+def cadastroCategoria(request):
+	
+	form = categoriaForm(request.POST or None, request.FILES or None)
+	if form.is_valid():
+		categoria = form.save(commit=False)		
+		categoria.save()
+		return redirect('perfil')		
+	contexto = {
+		'form': form
+	}
+	
+	return render(request, 'cadastroCategoria.html', contexto)	
 
 def login(request):
 	return render(request, 'login.html')

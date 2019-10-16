@@ -18,7 +18,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
-from core.views import index, menu, pedido, cadastro, login, perfil, cadastroPrato, dados, sobre, pratos, excluir
+from core.views import index, menu, pedido, cadastro, login, perfil, cadastroPrato, dados, sobre, pratos, excluir, ListaPedidos, cadastroCategoria
 
 
 urlpatterns = [
@@ -29,7 +29,9 @@ urlpatterns = [
     path('perfil/', perfil, name = 'perfil'),
     path('cadastro/', cadastro, name = 'cadastro'),
     path('pratos/', pratos, name = 'pratos'),
+    path('ListaPedidos/', ListaPedidos, name = 'ListaPedidos'),
     path('cadastroPrato/', cadastroPrato, name = 'cadastroPrato'),
+    path('cadastroCategoria/', cadastroCategoria, name = 'cadastroCategoria'),
     path('dados/<int:id>/', dados, name='dados'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name = 'logout'),
