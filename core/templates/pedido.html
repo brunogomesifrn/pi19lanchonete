@@ -6,70 +6,28 @@
   <body>
 {% block conteudo %}
 {% if user.is_authenticated %}
-    <section class="ftco-section">
+    <section class="ftco-section bg-light">
       <div class="container">
-        <div class="row no-gutters justify-content-center mb-5 pb-5">
+        <div class="row justify-content-center mb-5 pb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2>FAÇA UM PEDIDO</h2>
+            <span class="subheading">MENU</span>
+            <h2>Faça seu Pedido</h2>
           </div>
         </div>
-        <div class="row d-flex">
-          <div class="col-md-4 ftco-animate img" style="background-image: url('{% static "images/bg_1.jpg" %}');"></div>
-          <div class="col-md-8 ftco-animate makereservation p-5 bg-light">
-            <form action="#">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Name</label>
-                    <input type="text" class="form-control" placeholder="Your Name">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Email</label>
-                    <input type="text" class="form-control" placeholder="Your Email">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Phone</label>
-                    <input type="text" class="form-control" placeholder="Phone">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Phone</label>
-                    <input type="text" class="form-control" id="book_date" placeholder="Date">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Time</label>
-                    <input type="text" class="form-control" id="book_time" placeholder="Time">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Person</label>
-                    <div class="select-wrap one-third">
-                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                      <select name="" id="" class="form-control">
-                        <option value="">Person</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4+</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12 mt-3">
-                  <div class="form-group">
-                    <input type="submit" value="Fazer o pedido" class="btn btn-primary py-3 px-5">
-                  </div>
-                </div>
+        <div class="row">
+          <div class="col-md-12 dish-menu">
+
+            <div class="nav nav-pills justify-content-center ftco-animate" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link py-3 px-4 active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><span class="flaticon-meat"></span>Hambugueres</a>
+              <a class="nav-link py-3 px-4" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><span class="flaticon-cutlery"></span>Cachorro-Quente</a>
+              <a class="nav-link py-3 px-4" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><span class="flaticon-cheers"></span>Sucos</a>
+            </div>
+            <div class="tab-content py-5" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
               </div>
-            </form>
+            </div>
+            
           </div>
         </div>
       </div>
