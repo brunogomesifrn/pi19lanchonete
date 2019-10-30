@@ -130,3 +130,6 @@ LOGOUT_REDIRECT_URL = 'index'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = 'media'
+
+#AUTENTICACAO
+AUTH_USER_MODEL = 'core.CustomUser'

@@ -1,5 +1,6 @@
 from django.forms import ModelForm
-from .models import produto, pedido, categoria
+from django.contrib.auth.forms import UserCreationForm
+from .models import produto, pedido, categoria, CustomUser
 
 class produtoForm(ModelForm):
 	class Meta:
@@ -16,4 +17,7 @@ class categoriaForm(ModelForm):
 		model = categoria
 		fields = ['nome']
 
-			
+class CustomUserCreationForm(UserCreationForm):
+	class Meta:
+		model = CustomUser
+		fields = ['username', 'email', 'endereco', 'ncasa', 'cep', 'telefone', 'cpf']
