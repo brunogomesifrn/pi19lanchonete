@@ -30,7 +30,7 @@ def pratos(request):
 	}
 	return render(request, 'pratos.html', contexto)	
 
-def cadastro(request):
+def signup(request):
 	form = UserCreationForm(request.POST or None)
 	if form.is_valid():
 		form.save()
@@ -38,7 +38,7 @@ def cadastro(request):
 	contexto = {
 	'form': form
 	}	
-	return render(request, 'registration/cadastro.html', contexto)
+	return render(request, 'account/cadastro.html', contexto)
 
 def cadastroPrato(request):
 	

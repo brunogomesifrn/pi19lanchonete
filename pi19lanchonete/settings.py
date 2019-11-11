@@ -60,7 +60,7 @@ ROOT_URLCONF = 'pi19lanchonete.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,7 +129,9 @@ LOGIN_URL = '/login/'
 
 LOGIN_REDIRECT_URL = 'perfil'
 
-LOGOUT_REDIRECT_URL = 'index'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'index'
+
+ACCOUNT_LOGOUT_ON_GET = True
 
 MEDIA_URL = '/media/'
 
@@ -146,3 +148,17 @@ AUTHENTICATION_BACKENDS = {
 }
 
 SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 60 * 15
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_UNIQUE_EMAIL = True
+
+ACCOUNT_FORMS = {
+    'signup': 'core.forms.CustomUserCreationForm',
+}
