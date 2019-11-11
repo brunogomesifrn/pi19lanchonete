@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'core',
 ]
 
@@ -133,3 +137,12 @@ MEDIA_ROOT = 'media'
 
 #AUTENTICACAO
 AUTH_USER_MODEL = 'core.CustomUser'
+
+EMAIL_BACKEND = 'django.core.amil.backends.console.EmailBackend'
+
+AUTHENTICATION_BACKENDS = {
+    "django.contrib.auth.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend"
+}
+
+SITE_ID = 1
