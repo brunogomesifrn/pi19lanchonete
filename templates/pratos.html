@@ -15,8 +15,11 @@
       <div class="col-lg-4">
         <h1 class="my-5">Lista de Pratos</h1>
         <div class="list-group">
-        {% for pedido in pedido_lista %}
-          <p class="list-group-item mb-3">{{pedido.nome}} <a class="float-right" href="{% url 'excluir' pedido.id %}"><i class="fas fa-times text-danger"></i></a></p>
+        {% for categoria in categorias %}
+          {{categoria.nome}}
+          {% for produto in categoria.produto_set.all %}
+            <p class="list-group-item mb-3">{{produto.nome}} <a class="float-right" href="{ % url 'excluir' pedido.id %}"><i class="fas fa-times text-danger"></i></a></p>
+          {% endfor %}
         {% empty %}
           <p>Nenhum produto cadastrado</p>
         {% endfor %}  

@@ -140,10 +140,10 @@ MEDIA_ROOT = 'media'
 #AUTENTICACAO
 AUTH_USER_MODEL = 'core.CustomUser'
 
-EMAIL_BACKEND = 'django.core.amil.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 AUTHENTICATION_BACKENDS = {
-    "django.contrib.auth.ModelBackend",
+    "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend"
 }
 

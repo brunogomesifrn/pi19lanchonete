@@ -32,9 +32,7 @@ urlpatterns = [
     path('ListaPedidos/', ListaPedidos, name = 'ListaPedidos'),
     path('cadastroPrato/', cadastroPrato, name = 'cadastroPrato'),
     path('cadastroCategoria/', cadastroCategoria, name = 'cadastroCategoria'),
-    path('dados/<int:id>/', dados, name='dados'),
-    
-    
+    path('dados/<int:id>/', dados, name='dados'), 
     path('excluir/<int:id>/', excluir, name="excluir"),
     path('admin/', admin.site.urls),
 

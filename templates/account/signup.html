@@ -17,22 +17,32 @@
     <div class="row">
       <div class="col-md-4 ftco-animate img" style="background-image: url('{% static "images/decor.jpg" %}');"></div>
       <div class="col-md-8 ftco-animate makereservation p-5 bg-light">
-            <form method="post">
+            <form method="POST" enctype="multipart/form-data">
               <div class="row">
               {% csrf_token %}
                 <div class="col-md-6">
+                  {{form.foto.errors}}
+                  <div class="form-group">
+                    <h4>Foto: </br> 
+                    {{form.foto}}</h4>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  {{form.username.errors}}
                   <div class="form-group">
                     <h4>Usuário: </br> 
                     {{form.username}}</h4>
                   </div>
                 </div>
                 <div class="col-md-6">
+                  {{form.email.errors}}
                   <div class="form-group">
                     <h4>Email: </br>
                     {{form.email}} </h4>
                   </div>
                 </div>
                 <div class="col-md-6">
+                  {{form.password1.errors}}
                   <div class="form-group">
                     <h4>Senha: </br> 
                     {{form.password1}}</h4>
@@ -45,25 +55,41 @@
                   </ul>
                 </div>
                 <div class="col-md-6">
+                  {{form.password2.errors}}
                   <div class="form-group">
                     <h4>Repetir Senha: </br> 
                     {{form.password2}}</h4>
                   </div>
                 </div>
                 <div class="col-md-6">
+                  {{form.endereco.errors}}
                   <div class="form-group">
                     <h4>Endereço: </br> {{form.endereco}}</h4>
                   </div>
                 </div>
                 <div class="col-md-6">
+                  {{form.ncasa.errors}}
                   <div class="form-group">
                     <h4>Nº da casa: </br> {{form.ncasa}}</h4>
                   </div>
                 </div>
                 
                 <div class="col-md-6">
+                  {{form.telefone.errors}}
                   <div class="form-group">
                     <h4>Telefone: </br> {{form.telefone}} </h4>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  {{form.cpf.errors}}
+                  <div class="form-group">
+                    <h4>CPF: </br> {{form.cpf}} </h4>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  {{form.cep.errors}}
+                  <div class="form-group">
+                    <h4>CEP: </br> {{form.cep}} </h4>
                   </div>
                 </div>
                 </br>

@@ -6,7 +6,7 @@ class CustomUserCreationForm(UserCreationForm):
 	class Meta:
 		model = CustomUser
 
-		fields = ('username', 'email', 'endereco', 'ncasa', 'cep', 'telefone', 'cpf')
+		fields = ('username', 'email', 'endereco', 'ncasa', 'cep', 'telefone', 'cpf', 'foto')
 
 class produtoForm(ModelForm):
 	class Meta:

@@ -47,9 +47,8 @@
             <li class="nav-item"><a href="/pedido" class="nav-link">Pedido</a></li>
             {% if user.is_authenticated %}
             <li class="nav-item"><a href="{% url 'perfil' %}" class="nav-link">Perfil</a></li>
-            {% endif %}
-            {% if user.is_authenticated %}
             <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link">Sair</a></li>
+            {% else %}
             <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link">Login</a></li>
             <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link">Cadastro</a></li>
             {% endif %}
