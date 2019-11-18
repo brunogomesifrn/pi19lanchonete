@@ -18,22 +18,26 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
-from core.views import index, menu, pedido, signup, login, perfil, cadastroPrato, dados, sobre, pratos, excluir, ListaPedidos, cadastroCategoria
+from core.views import index, menu, fazer_pedido, signup, login, perfil, cadastroPrato, dados, sobre, pratos, excluir, ListaPedidos, cadastroCategoria, pedidos
 
 
 urlpatterns = [
 	path('index/', index, name='index'),
 	path('menu/', menu, name= 'menu'),
-	path('pedido/', pedido, name = 'pedido'),
+	path('pedido/', fazer_pedido, name = 'pedido'),
     path('sobre/', sobre, name='sobre'),
     path('perfil/', perfil, name = 'perfil'),
     path('', include('allauth.urls')),
     path('pratos/', pratos, name = 'pratos'),
+    path('pedidos/', pedidos, name='pedidos'),
     path('ListaPedidos/', ListaPedidos, name = 'ListaPedidos'),
     path('cadastroPrato/', cadastroPrato, name = 'cadastroPrato'),
     path('cadastroCategoria/', cadastroCategoria, name = 'cadastroCategoria'),
     path('dados/<int:id>/', dados, name='dados'), 
     path('excluir/<int:id>/', excluir, name="excluir"),
+    # path('carrinho/adicionar/<int:produto_id>/', adicionar_ao_carrinho, name='carrinho_adicionar'),
+    # path('carrinho/adicionar/<int:produto_id>/', remover_do_carrinho, name='carrinho_remover'),
+    # path('carrinho/', carrinho, name='carrinho'),
     path('admin/', admin.site.urls),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -30,6 +30,9 @@ class produto(models.Model):
 class pedido(models.Model):
 	quantidade = models.IntegerField('quantidade', null=True)
 	tempo = models.DateTimeField('tempo', auto_now=True, auto_now_add=False)
+	produto = models.ForeignKey(produto, on_delete=models.CASCADE)
+	cliente = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+	etapa = models.PositiveSmallIntegerField('Etapa', default=0)
 
 
 

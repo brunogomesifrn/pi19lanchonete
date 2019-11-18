@@ -37,121 +37,55 @@
             <h2>MENU</h2>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12 dish-menu">
+        <form action="/pedido/" method="POST">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-12 dish-menu">
 
-            <div class="nav nav-pills justify-content-center ftco-animate" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            
-              {% for categoria in categorias %}
-              <a class="nav-link py-3 px-4 {% if forloop.first %}active{% endif %}" id="categoria-{{categoria.id}}-tab" data-toggle="pill" href="#categoria-{{categoria.id}}" role="tab" aria-controls="categoria-{{categoria.id}}" aria-selected="false">{{categoria.nome}}</a>
-              {% endfor %}
-            </div>
+              <div class="nav nav-pills justify-content-center ftco-animate" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              
+                {% for categoria in categorias %}
+                <a class="nav-link py-3 px-4 {% if forloop.first %}active{% endif %}" id="categoria-{{categoria.id}}-tab" data-toggle="pill" href="#categoria-{{categoria.id}}" role="tab" aria-controls="categoria-{{categoria.id}}" aria-selected="false">{{categoria.nome}}</a>
+                {% endfor %}
+              </div>
 
-            <div class="tab-content py-5" id="v-pills-tabContent">
-              {% for categoria in categorias %}
-                {% for produto in categoria.produto_set.all %}
-                  <div class="tab-pane fade show {% if forloop.parentloop.first %}active{% endif %}" id="categoria-{{categoria.id}}" role="tabpanel" aria-labelledby="categoria-{{categoria.id}}-tab">
-                    <div class="row">
-                      <div class="menus d-flex ftco-animate">
-                        <div class="menu-img" style="background-image: url('/media/{{produto.imagem}}');">
-                        </div>
-                        <div class="text d-flex">
-                          <div class="one-half">
-                            <h3>{{produto.nome}}</h3>
-                            <p>{{produto.descricao}}</p>
+              <div class="tab-content py-5" id="v-pills-tabContent">
+                {% for categoria in categorias %}
+                  {% for produto in categoria.produto_set.all %}
+                    <div class="tab-pane fade show {% if forloop.parentloop.first %}active{% endif %}" id="categoria-{{categoria.id}}" role="tabpanel" aria-labelledby="categoria-{{categoria.id}}-tab">
+                      <div class="row">
+                        <div class="menus d-flex ftco-animate">
+                          <div class="menu-img" style="background-image: url('/media/{{produto.imagem}}');">
                           </div>
-                          <div class="one-forth">
-                            <span class="price">{{produto.preco}}</span>
+                          <div class="text d-flex">
+                            <div class="one-half">
+                              <h3>{{produto.nome}}</h3>
+                              <p>{{produto.descricao}}</p>
+                            </div>
+                            <div class="one-forth">
+                              <span class="price">{{produto.preco}}</span>
+                              <input type="number" name="pedido-{{produto.id}}" placeholder="Quantidade" />
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  {% endfor %}
                 {% endfor %}
-              {% endfor %}
-                  <!-- END -->
-
-              
-                  </div>
-                </div>
               </div>
-              <div class="col-sm-12 pt-4 text-center ftco-animate">
-                <span><a href="/pedido" class="btn btn-primary btn-outline-primary p-3">FAÇA UM PEDIDO</a></span>
-              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 pt-4 text-center ftco-animate">
+            <span><button type="submit" class="btn btn-primary btn-outline-primary p-3">FAÇA UM PEDIDO</button></span>
+          </div>
+        </form>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="ftco-section testimony-section">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-5">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2>AVALIAÇÃO DOS CLIENTES</h2>
-          </div>
-        </div>
-        <div class="row ftco-animate">
-          <div class="carousel owl-carousel ftco-owl">
-            <div class="item text-center">
-              <div class="testimony-wrap p-4 pb-5">
-                <div class="user-img mb-4" style="background-image: url('{% static "images/person_1.jpg" %}')" style="border: 1px solid red;"></div>
-                <div class="text">
-                  <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span></p>
-                  <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  <p class="name">Dennis Green</p>
-                  <span class="position">Guests from Italy</span>
-                </div>
-              </div>
-            </div>
-            <div class="item text-center">
-              <div class="testimony-wrap p-4 pb-5">
-                <div class="user-img mb-4" style="background-image: url('{% static "images/person_2.jpg" %}')" style="border: 1px solid red;"></div>
-                <div class="text">
-                  <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span></p>
-                  <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  <p class="name">Dennis Green</p>
-                  <span class="position">Guests from Italy</span>
-                </div>
-              </div>
-            </div>
-            <div class="item text-center">
-              <div class="testimony-wrap p-4 pb-5">
-                <div class="user-img mb-4" style="background-image: url('{% static "images/person_3.jpg" %}')" style="border: 1px solid red;"></div>
-                <div class="text">
-                  <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span></p>
-                  <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  <p class="name">Dennis Green</p>
-                  <span class="position">Guests from Italy</span>
-                </div>
-              </div>
-            </div>
-            <div class="item text-center">
-              <div class="testimony-wrap p-4 pb-5">
-                <div class="user-img mb-4" style="background-image: url('{% static "images/person_1.jpg" %}')" style="border: 1px solid red;"></div>
-                <div class="text">
-                  <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span></p>
-                  <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  <p class="name">Dennis Green</p>
-                  <span class="position">Guests from Italy</span>
-                </div>
-              </div>
-            </div>
-            <div class="item text-center">
-              <div class="testimony-wrap p-4 pb-5">
-                <div class="user-img mb-4" style="background-image: url('{% static "images/person_1.jpg" %}')" style="border: 1px solid red;"></div>
-                <div class="text">
-                  <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span></p>
-                  <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  <p class="name">Dennis Green</p>
-                  <span class="position">Guests from Italy</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 {% endblock %}
 
     
