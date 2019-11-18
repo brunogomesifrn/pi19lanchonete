@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
-from core.views import index, menu, fazer_pedido, signup, login, perfil, cadastroPrato, dados, sobre, pratos, excluir, ListaPedidos, cadastroCategoria, pedidos
+from core.views import index, menu, fazer_pedido, signup, login, perfil, cadastroPrato, dados, sobre, pratos, excluir, ListaPedidos, cadastroCategoria, pedidos, editar
 
 
 urlpatterns = [
@@ -35,6 +35,7 @@ urlpatterns = [
     path('cadastroCategoria/', cadastroCategoria, name = 'cadastroCategoria'),
     path('dados/<int:id>/', dados, name='dados'), 
     path('excluir/<int:id>/', excluir, name="excluir"),
+    path('editar/<int:id>/', editar, name="editar"),
     # path('carrinho/adicionar/<int:produto_id>/', adicionar_ao_carrinho, name='carrinho_adicionar'),
     # path('carrinho/adicionar/<int:produto_id>/', remover_do_carrinho, name='carrinho_remover'),
     # path('carrinho/', carrinho, name='carrinho'),

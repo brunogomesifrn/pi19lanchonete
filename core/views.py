@@ -117,10 +117,23 @@ def dados(request, id):
         return render(request, 'registro.html', contexto)
 
 def excluir(request, id):
-    pedido = produto.objects.get(pk=id)
-    produto.delete()
-    return redirect('perfil')
+    p = produto.objects.get(pk=id)
+    p.delete()
+    return redirect('pratos')
 
+def editar(request, id):
+    p = produto.objects.get(pk=id)
+
+    form = produtoForm(request.POST or None, instance=p)
+
+    if form.is_valid():
+        form.save()
+        return redirect('pratos')
+
+    contexto = {
+        'form': form
+    }
+    return render(request, 'cadastroPrato.html', contexto)
 # def adicionar_ao_carrinho(request, produto_id, quantidade):
 #     produto = Produto.objects.get(id=produto_id)
 #     carrinho = Cart(request)
