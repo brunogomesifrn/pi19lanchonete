@@ -17,17 +17,22 @@
         <div class="row d-flex">
           <div class="col-md-4 ftco-animate img" style="background-image: url('/media/{{user.foto}}');"></div>
           <div class="col-md-7 ftco-animate makereservation p-5 bg-light">
+                
                 <div class="col-md-6">
-                    <p>DADOS PESSOAIS</p>
-                    </br>
+                  {% if user.is_superuser %}  
+                    <span><a href="{% url 'pratos' %}" class="btn btn-primary btn-outline-primary p-3">Cardápio</a></span>
+                    <span><a href="{% url 'pedidos' %}" class="btn btn-primary btn-outline-primary p-3">Pedidos</a></span>
+                  {% endif %}
+                  {% if not user.is_superuser %}      
                     <a href="{% url 'ListaPedidos' %}"> PEDIDOS REALIZADOS</a>
-
+                  {% endif %}
                     </br>
                     </br>
                     </br>
                     </br>
                     </br>
                 </div>
+                
           </div>
         </div>
       </div>
@@ -35,10 +40,7 @@
 	  </div>
     </section>
   	<div>
-	  	{% if user.is_superuser %}	
-	  	<span><a href="{% url 'pratos' %}" class="btn btn-primary btn-outline-primary p-3">Cardápio</a></span>
-      <span><a href="{% url 'pedidos' %}" class="btn btn-primary btn-outline-primary p-3">Pedidos</a></span>
-	  	{% endif %}
+	  	
   	</div>      
 {% endblock %}
 </body>

@@ -1,17 +1,12 @@
-<!DOCTYPE html>
 {% extends "base.html" %}
 {% load static %}
 {% load widget_tweaks %}
-{% regroup pedidos by cliente as clientes %}
 
-<html>
-
-
-<body>
 {% block conteudo %}
+	{% regroup pedidos by cliente as clientes %}
 	<ul>
 		{% for cliente in clientes %}
-			<li>{{cliente.grouper.username}} - {{cliente.telefone}}</li>
+			<li>{{cliente.grouper.username}} - {{cliente.grouper.telefone}}</li>
 				<ul>	
 					{% for pedido in cliente.list %}
 						<li>{{pedido.produto.nome}} - {{pedido.quantidade}}</li>
@@ -19,6 +14,4 @@
 				</ul>
 		{% endfor %}
 	</ul>
-{% endblock %}	
-</body>
-</html>
+{% endblock %}

@@ -51,8 +51,8 @@
 
               <div class="tab-content py-5" id="v-pills-tabContent">
                 {% for categoria in categorias %}
-                  {% for produto in categoria.produto_set.all %}
-                    <div class="tab-pane fade show {% if forloop.parentloop.first %}active{% endif %}" id="categoria-{{categoria.id}}" role="tabpanel" aria-labelledby="categoria-{{categoria.id}}-tab">
+                  <div class="tab-pane fade show {% if forloop.first %}active{% endif %}" id="categoria-{{categoria.id}}" role="tabpanel" aria-labelledby="categoria-{{categoria.id}}-tab">
+                    {% for produto in categoria.produto_set.all %}
                       <div class="row">
                         <div class="menus d-flex ftco-animate">
                           <div class="menu-img" style="background-image: url('/media/{{produto.imagem}}');">
@@ -64,19 +64,23 @@
                             </div>
                             <div class="one-forth">
                               <span class="price">{{produto.preco}}</span>
-                              <input type="number" name="pedido-{{produto.id}}" placeholder="Quantidade" />
+                              <input type="number" name="pedido-{{produto.id}}" class="w-100" placeholder="Quantidade" />
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  {% endfor %}
+                    {% endfor %}
+                  </div>
                 {% endfor %}
               </div>
             </div>
           </div>
           <div class="col-sm-12 pt-4 text-center ftco-animate">
+            {% if user.is_authenticated %}
             <span><button type="submit" class="btn btn-primary btn-outline-primary p-3">FAÇA UM PEDIDO</button></span>
+            {% else %}
+            <span><a  href="{% url 'account_login' %}" type="submit" class="btn btn-primary btn-outline-primary p-3">LOGIN</a></span>
+            {% endif %}
           </div>
         </form>
             </div>

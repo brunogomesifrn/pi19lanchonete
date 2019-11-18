@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.db.models import Sum
+from django.forms.models import model_to_dict
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-# from cart.cart import Cart
 from .models import produto, categoria, pedido
 from .forms import produtoForm, categoriaForm
 
@@ -17,6 +17,8 @@ def menu(request):
     return render(request, 'menu.html')
 
 def fazer_pedido(request):
+    pedidos = pedido.objects.filter(cliente=request.user)
+    total = pedidos.aggregate(Sum('produto__preco'))
     if not request.user.is_authenticated:
         return redirect('account_login')
     if request.method == 'POST':
@@ -28,8 +30,11 @@ def fazer_pedido(request):
                 quantidade=quant,
                 cliente=request.user
             )
-
-    return render(request, 'pedido.html')
+    contexto = {
+        'pedidos': pedidos,
+        'total': total['produto__preco__sum']
+        }        
+    return render(request, 'pedido.html', contexto)
 
 
 def ListaPedidos(request):
@@ -132,20 +137,3 @@ def editar(request, id):
         'form': form
     }
     return render(request, 'cadastroPrato.html', contexto)
-# def adicionar_ao_carrinho(request, produto_id, quantidade):
-#     produto = Produto.objects.get(id=produto_id)
-#     carrinho = Cart(request)
-#     carrinho.add(product, produto.preco, quantidade)
-#     return render(request, '')
-
-# def remover_do_carrrinho(request, produto_id):
-#     produto = Produto.objects.get(id=produto_id)
-#     carrinho = Cart(request)
-#     carrinho.remove(produto)
-#     return render(request, '')
-
-# def carrinho(request):
-#     contexto = {
-#         'carrinho': Cart(request)
-#     }
-#     return render(request, 'cart.html', contexto)
