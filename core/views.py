@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.db.models import Sum
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 # from cart.cart import Cart
@@ -27,9 +28,18 @@ def fazer_pedido(request):
                 quantidade=quant,
                 cliente=request.user
             )
-        breakpoint()
 
     return render(request, 'pedido.html')
+
+
+def ListaPedidos(request):
+    pedidos = pedido.objects.filter(cliente=request.user)
+    total = pedidos.aggregate(Sum('produto__preco'))
+    contexto = {
+        'pedidos': pedidos,
+        'total': total['produto__preco__sum'],
+    }
+    return render(request, 'ListaPedidos.html', contexto)
 
 
 def pedidos(request):
@@ -42,8 +52,6 @@ def pedidos(request):
 def sobre(request):
     return render(request, 'sobre.html')
 
-def ListaPedidos(request):
-    return render(request, 'ListaPedidos.html') 
 
 def pratos(request):
     categorias = categoria.objects.all()

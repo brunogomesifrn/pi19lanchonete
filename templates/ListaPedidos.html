@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
 {% load static %}
+{% load widget_tweaks %}
 <html>
 <head>
 	<title></title>
 </head>
 <body>
-
-
+{% block conteudo %}
+	{% for pedido in pedidos %}
+		{{pedido}}
+	{% endfor %}
+	Valor total: {{total|floatformat:2}}
+{% endblock %}
 </body>
 </html>

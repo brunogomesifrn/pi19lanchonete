@@ -11,7 +11,7 @@
 {% block conteudo %}
 	<ul>
 		{% for cliente in clientes %}
-			<li>{{cliente.grouper.username}}</li>
+			<li>{{cliente.grouper.username}} - {{cliente.telefone}}</li>
 				<ul>	
 					{% for pedido in cliente.list %}
 						<li>{{pedido.produto.nome}} - {{pedido.quantidade}}</li>

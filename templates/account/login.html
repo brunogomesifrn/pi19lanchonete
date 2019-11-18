@@ -22,7 +22,7 @@
                 {% for field in form %}
                   <div class="col-md-6">
                     <div class="form-group">
-                      <h4>Usuário: 
+                      <h4>{{field.label}}: 
                       {{ field }}</h4>
                       </br>
                     </div>
@@ -35,16 +35,7 @@
       </div>
   </section>
 
-<!--  <section class="ftco-section">
-        <div class="row no-gutters justify-content-center mb-5 pb-5">
-          <form method="post">
-          {% csrf_token %} 
-          <p>Usuário: {{form.username}}</p>
-          <p>Senha: {{form.password}}</p>
-          <button type="submit">Entrar</button>
-          </form>
-      </div>
-    </section> -->
+
   
 {% endblock %}
 </body>

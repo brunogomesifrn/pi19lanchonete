@@ -26,6 +26,8 @@ class produto(models.Model):
 	preco = models.DecimalField('preco', max_digits=5, decimal_places=2, null = True) 
 	categoria = models.ForeignKey(categoria, on_delete=models.CASCADE )
 
+	def __str__(self):
+		return self.nome
 
 class pedido(models.Model):
 	quantidade = models.IntegerField('quantidade', null=True)
@@ -34,6 +36,8 @@ class pedido(models.Model):
 	cliente = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 	etapa = models.PositiveSmallIntegerField('Etapa', default=0)
 
+	def __str__(self):
+		return '%s x %s' % (self.produto, self.quantidade)
 
 
 	
