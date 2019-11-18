@@ -21,6 +21,8 @@ def fazer_pedido(request):
         return redirect('account_login')
     if request.method == 'POST':
         pedidos = {k.strip('pedido-'):int(v) for k, v in request.POST.items() if k.startswith('pedido') and v}
+        if not pedidos:
+        	return redirect('index')
         for id, quant in pedidos.items():
             p = produto.objects.get(pk=id)
             pedido.objects.create(

@@ -8,17 +8,19 @@
 </head>
 <body>
 {% block conteudo %}
+<br />
+<br />
 <div class="row">
       <div class="col-lg-12 mb-12">
         
         <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
-        <div class="controls">
-            
-            <label>Categoria: </label> 
-            <p>{{form.nome}}</p>              
+        <div class="controls text-center">
+            <h2>Categoria: </h2> 
+            <br />
+            <p>{{form.nome}}</p>
+            <button type="submit" class="btn btn-primary" id="sendMessageButton">Salvar</button>
         </div>
-    <button type="submit" class="btn btn-primary" id="sendMessageButton">Salvar</button>
 	</form>
     </div>
   </div>    

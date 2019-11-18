@@ -9,6 +9,10 @@
 
 <body>
 {% block conteudo %}
+	<br />
+	<div class="text-center">
+        <h2>Pedidos: </h2> 
+    </div>
 	<ul>
 		{% for cliente in clientes %}
 			<li>{{cliente.grouper.username}} - {{cliente.telefone}}</li>
