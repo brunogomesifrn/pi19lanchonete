@@ -18,7 +18,7 @@
         {% for categoria in categorias %}
           {{categoria.nome}}
           {% for produto in categoria.produto_set.all %}
-            <p class="list-group-item mb-3">{{produto.nome}} <a class="float-right" href="{ % url 'excluir' pedido.id %}"><i class="fas fa-times text-danger"></i></a></p>
+            <p class="list-group-item mb-3">{{produto.nome}} <a class="float-right" href="{% url 'excluir' produto.id %}">Apagar</a> <a class="float-right" href="{% url 'editar' produto.id %}">Editar</a></p>
           {% endfor %}
         {% empty %}
           <p>Nenhum produto cadastrado</p>
