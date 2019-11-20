@@ -3,7 +3,14 @@
 {% load widget_tweaks %}
 
 {% block conteudo %}
+<<<<<<< HEAD
 	{% regroup pedidos by cliente as clientes %}
+=======
+	<br />
+	<div class="text-center">
+        <h2>Pedidos: </h2> 
+    </div>
+>>>>>>> f9d5690d13417d9b6415ebacaf6216a5bb5b1c6f
 	<ul>
 		{% for cliente in clientes %}
 			<li>{{cliente.grouper.username}} - {{cliente.grouper.telefone}}</li>

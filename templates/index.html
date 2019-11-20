@@ -3,16 +3,15 @@
 {% load static %}
 {% load widget_tweaks %}
 
-    
-    <!-- END slider -->
-
-
-
-<!-- daqui pra cima -->
-    {% block conteudo %}
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body>
+  {% block conteudo %}
     <br/>
     <br/>
-     <section class="ftco-section-2">
+    <section class="ftco-section-2">
       <div class="container d-flex">
         <div class="section-2-blocks-wrapper row">
           <div class="img col-sm-12 col-lg-4" style="background-image: url('{% static "images/lanchonetecop.jpg" %}');">
@@ -75,6 +74,7 @@
               </div>
             </div>
           </div>
+          {% if not user.is_superuser %} 
           <div class="col-sm-12 pt-4 text-center ftco-animate">
             {% if user.is_authenticated %}
             <span><button type="submit" class="btn btn-primary btn-outline-primary p-3">FAÇA UM PEDIDO</button></span>
@@ -82,16 +82,13 @@
             <span><a  href="{% url 'account_login' %}" type="submit" class="btn btn-primary btn-outline-primary p-3">LOGIN</a></span>
             {% endif %}
           </div>
+          {% endif %}
         </form>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    
-{% endblock %}
-
-    
+  {% endblock %}
   </body>
 </html>

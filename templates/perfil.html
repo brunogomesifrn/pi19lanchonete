@@ -19,16 +19,18 @@
           <div class="col-md-7 ftco-animate makereservation p-5 bg-light">
                 
                 <div class="col-md-6">
-                  {% if user.is_superuser %}  
-                    <span><a href="{% url 'pratos' %}" class="btn btn-primary btn-outline-primary p-3">Cardápio</a></span>
-                    <span><a href="{% url 'pedidos' %}" class="btn btn-primary btn-outline-primary p-3">Pedidos</a></span>
-                  {% endif %}
+                    </br>
+                    <a href="{% url 'dados' request.user.id %}"><p>DADOS PESSOAIS</p></a>
+                    </br>
                   {% if not user.is_superuser %}      
                     <a href="{% url 'ListaPedidos' %}"> PEDIDOS REALIZADOS</a>
                   {% endif %}
-                    </br>
-                    </br>
-                    </br>
+                    <div>
+                      {% if user.is_superuser %}  
+                      <span><a href="{% url 'pratos' %}" class="btn btn-primary btn-outline-primary p-3">Cardápio</a></span>
+                      <span><a href="{% url 'pedidos' %}" class="btn btn-primary btn-outline-primary p-3">Pedidos</a></span>
+                      {% endif %}
+                    </div>  
                     </br>
                     </br>
                 </div>
@@ -36,12 +38,7 @@
           </div>
         </div>
       </div>
-    </section>
-	  </div>
-    </section>
-  	<div>
-	  	
-  	</div>      
+    </section> 
 {% endblock %}
 </body>
 </html>

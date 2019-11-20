@@ -1,11 +1,16 @@
 from django.forms import ModelForm
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import produto, pedido, categoria, CustomUser
 
 class CustomUserCreationForm(UserCreationForm):
 	class Meta:
 		model = CustomUser
 
+		fields = ('username', 'email', 'endereco', 'ncasa', 'cep', 'telefone', 'cpf', 'foto')
+
+class CustomUserChangeForm(UserChangeForm):
+	class Meta:
+		model = CustomUser
 		fields = ('username', 'email', 'endereco', 'ncasa', 'cep', 'telefone', 'cpf', 'foto')
 
 class produtoForm(ModelForm):

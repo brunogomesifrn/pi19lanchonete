@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.db.models import Sum
 from django.forms.models import model_to_dict
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.decorators import login_required
-from .models import produto, categoria, pedido
-from .forms import produtoForm, categoriaForm
+from .models import produto, categoria, pedido, CustomUser
+from .forms import produtoForm, categoriaForm, CustomUserChangeForm
 
 def index(request):
     categorias = categoria.objects.all()
@@ -17,12 +17,13 @@ def menu(request):
     return render(request, 'menu.html')
 
 def fazer_pedido(request):
-    pedidos = pedido.objects.filter(cliente=request.user)
-    total = pedidos.aggregate(Sum('produto__preco'))
     if not request.user.is_authenticated:
         return redirect('account_login')
+    total = 0
     if request.method == 'POST':
         pedidos = {k.strip('pedido-'):int(v) for k, v in request.POST.items() if k.startswith('pedido') and v}
+        if not pedidos:
+        	return redirect('index')
         for id, quant in pedidos.items():
             p = produto.objects.get(pk=id)
             pedido.objects.create(
@@ -30,9 +31,10 @@ def fazer_pedido(request):
                 quantidade=quant,
                 cliente=request.user
             )
+            total += p.preco * quant
     contexto = {
         'pedidos': pedidos,
-        'total': total['produto__preco__sum']
+        'total': total
         }        
     return render(request, 'pedido.html', contexto)
 
@@ -109,15 +111,15 @@ def perfil(request):
 
 @login_required
 def dados(request, id):
-    user = User.objects.get(pk=id)
-    form = UserCreationForm(request.POST or None, instance=user)
+    user = CustomUser.objects.get(pk=id)
+    form = CustomUserChangeForm(request.POST or None, instance=user)
     if form.is_valid():
         form.save()
         return redirect('perfil')
-        contexto = {
-        'form': form
-        }
-        return render(request, 'registro.html', contexto)
+    contexto = {
+    'form': form
+    }
+    return render(request, 'account/editardados.html', contexto)
 
 def excluir(request, id):
     p = produto.objects.get(pk=id)

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+{% block conteudo %}
+<section class="ftco-section">
+  <div class="container">
+    <div class="row no-gutters justify-content-center mb-5 pb-5">
+      <div class="col-md-7 text-center heading-section ftco-animate">
+        <h2>EDITAR DADOS</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 ftco-animate img" style="background-image: url('{% static "images/lanchonetecop.jpg" %}');"></div>
+      <div class="col-md-8 ftco-animate makereservation p-5 bg-light">
+            <form method="POST" enctype="multipart/form-data">
+              <div class="row">
+              {% csrf_token %}
+                <div class="col-md-6">
+                  {{form.foto.errors}}
+                  <div class="form-group">
+                    <h4>Foto: </br> 
+                    {{form.foto}}</h4>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  {{form.username.errors}}
+                  <div class="form-group">
+                    <h4>Usuário: </br> 
+                    {{form.username}}</h4>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  {{form.email.errors}}
+                  <div class="form-group">
+                    <h4>Email: </br>
+                    {{form.email}} </h4>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  {{form.endereco.errors}}
+                  <div class="form-group">
+                    <h4>Endereço: </br> {{form.endereco}}</h4>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  {{form.ncasa.errors}}
+                  <div class="form-group">
+                    <h4>Nº da casa: </br> {{form.ncasa}}</h4>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  {{form.telefone.errors}}
+                  <div class="form-group">
+                    <h4>Telefone: </br> {{form.telefone}} </h4>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  {{form.cpf.errors}}
+                  <div class="form-group">
+                    <h4>CPF: </br> {{form.cpf}} </h4>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  {{form.cep.errors}}
+                  <div class="form-group">
+                    <h4>CEP: </br> {{form.cep}} </h4>
+                  </div>
+                </div>
+                </br>
+                <button type="submit" class="btn btn-primary py-3 px-5">Salvar</button> 
+              </div>
+            </form>
+      </div>    
+    </div>
+  </div>
+</section> 
+{% endblock %}
+</body>
+</html>
